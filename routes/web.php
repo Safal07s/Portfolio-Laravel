@@ -7,6 +7,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// frontend routes
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/index', function () {
+    return view('frontend.index');
+});
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+
+// backend routes
+
+Route::resource('tasks','App\Http\Controllers\TaskController');
+Route::resource('skills','App\Http\Controllers\SkillsController');
+Route::resource('services','App\Http\Controllers\ServiceController');
+Route::resource('contacts','App\Http\Controllers\ContactController');
+Route::resource('facts','App\Http\Controllers\FactController');
+Route::resource('settings','App\Http\Controllers\SettingController');
+Route::resource('files','App\Http\Controllers\FileController');
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
